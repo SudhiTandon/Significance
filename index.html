@@ -1,0 +1,67 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="Angular.js"></script>
+    <script src="controller.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+    <style>
+        #cal {
+            border: 1px solid black;
+            background: lightgrey;
+            height: 125px;
+        }
+        #PRange {
+             border: 1px solid black;
+        }
+        #Significance {
+             border: 1px solid black;
+        }
+    </style>
+
+    <title>Significance Calculator</title>
+</head>
+
+<body ng-app = "myApp">
+
+    <div ng-controller="myCtrl">
+        <center>
+            <h3>Are your results significant?</h3><br>
+            <table id="cal">
+                <tr>
+                    <th style="padding-left: 130px">Control</th>
+                    <th>Variation</th>
+                </tr>
+                <tr>
+                    <td style="padding-right: 34px">Number Of Visitors:&nbsp;<input type="number" name="control" ng-model="control" required style="width: 100px;margin-left: 34px;"ng-pattern="/^[0-9]$/"></td>
+                    <td><input type="number" name="variation" ng-model="variation" required style="width: 100px;padding-right: 6px;
+    padding-left: 5px;" ng-pattern="/^[0-9]$/"></td>
+                </tr>
+                <tr>
+                    <td>Number Of Conversions: &nbsp;<input type="number" name="control1" ng-model="control1" required style="width: 100px"ng-pattern="/^[0-9]$/"></td>
+                    <td><input type="number" name="variation1" ng-model="variation1" required style="width: 100px;padding-right: 6px;
+    padding-left: 5px;"ng-pattern="/^[0-9]$/"></td>
+                </tr>
+        </center>
+        </table><br><br>
+        <input type="button" value="Calculate Significance" ng-click="callFun()">
+
+
+        <div ng-show = "calledFunc">
+            <table id="PRange">
+                <tr>
+                    <th>P-Range</th>
+                    <th>Significance</th>
+                </tr>
+                <tr>
+                    <td> {{ outputNumber }}</td>
+                    <td>{{ result }}</td>
+                </tr>
+                
+            </table>
+            </div>
+    </div>
+</body>
+
+</html>
